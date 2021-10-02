@@ -23,9 +23,9 @@ services:
     ports:
       - "3307:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: "rootpw"
-      MYSQL_USER: "admin"
-      MYSQL_PASSWORD: "adminpw"
-      MYSQL_DATABASE: "typeorm"
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      MYSQL_USER: "${DB_USERNAME}"
+      MYSQL_PASSWORD: "${DB_PASSWORD}"
+      MYSQL_DATABASE: "${DB_DATABASE}"
 
 
