@@ -1,28 +1,26 @@
-import "reflect-metadata";
-import {createConnection} from "typeorm";
-import {User} from "./entity/User";
-import { createExpressServer, Action } from 'routing-controllers';
-import { Request, Response } from 'express';
+import express from 'express';
+import morgan from 'morgan';
+import cors from 'cors'
+import { createConnection } from 'typeorm'
 
-createConnection().then(async connection => {
 
-    console.log("Inserting a new user into the database...");
-    const user = new User();
-    user.firstName = "Timber";
-    user.lastName = "Saw";
-    user.age = Math.random() * 100;
-    await connection.manager.save(user);
-    
-    const users = await connection.manager.find(User);
+const app = express();
 
-    const app = createExpressServer({})
+// Connection
+createConnection()
+  .then(async (connection: any) => {
+    app.listen(3000);
+  })
+  .catch((error: any) => {
+    console.log(error)
+  });
 
-    app.get('/', (req: Request, res: Response) => {
-        res.send(users);
-    });
+// Middlewares
+app.use(cors());
+app.use(express.json());
+app.use(morgan('dev'));
 
-    const server = app.listen(3000, '0.0.0.0', () => {
-        console.log('Application is running at: ' + server.address().address + ':' + server.address().port);
-    });
+// Routes
 
-}).catch(error => console.log(error));
+
+console.log('Server on port', 3000);
