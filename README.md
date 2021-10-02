@@ -15,13 +15,13 @@ Steps to run this project | Pasos para correr el proyecto:
 
  2. Run next command | Ejecutar el siguiente comando:
 	
-  `npm i`
+    `npm i`
 
 3. Run docker image | Ejecutar la imagen de Docker:
 	
-  *The database expose port is 3307 but in the networks of containers, database port is 3306 | El puerto externo de la base de datos es 3307 pero dentro del contenedor es 3306*
+    *The database expose port is 3307 but in the networks of containers, database port is 3306 | El puerto externo de la base de datos es 3307 pero dentro del contenedor es 3306*
 
-	`docker-compose up -d`
+	  `docker-compose up -d`
  
 4. Finally it is possible to run the project with the following commands | Finalmente es posible ejecutar el proyecto con los siguientes comandos:
 
