@@ -7,6 +7,7 @@ Steps to run this project | Pasos para correr el proyecto:
 	```
 	DB_HOST=127.0.0.1
 	DB_PORT=3307
+	HOST_PORT=3308
 	DB_USERNAME=admin
 	DB_PASSWORD=adminpw
 	MYSQL_ROOT_PASSWORD=adminpw
