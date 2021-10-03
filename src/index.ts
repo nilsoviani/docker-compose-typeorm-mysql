@@ -4,23 +4,31 @@ import cors from 'cors'
 import { createConnection } from 'typeorm'
 
 
+const { HOST_PORT } = process.env;
 const app = express();
 
-// Connection
-createConnection()
-  .then(async (connection: any) => {
-    app.listen(3000);
-  })
-  .catch((error: any) => {
-    console.log(error)
-  });
+const main = async () => {
+  try {
+    // Connection
+    await createConnection();
+    console.log('Connected to MYSQL');
 
-// Middlewares
-app.use(cors());
-app.use(express.json());
-app.use(morgan('dev'));
+    // Middlewares
+    app.use(cors());
+    app.use(express.json());
+    app.use(morgan('dev'));
 
-// Routes
+    // Routes
 
+    //Listener
+    app.listen(HOST_PORT, () => {
+      console.log(`Now running on port ${HOST_PORT}`);
+    });
 
-console.log('Server on port', 3000);
+  } catch (error) {
+    console.error(error);
+    throw new Error('Unable to connect to db');
+  }
+};
+
+main();
