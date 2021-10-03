@@ -23,7 +23,7 @@
   "scripts": {
     "build": "tsc",
     "start": "ts-node src/index.ts",
-    "start:dev": "nodemon src/index.ts",
+    "start:dev": "nodemon --watch './**/*.ts' --exec 'ts-node' src/index.ts",
     "start:prod": "node dist/index.js"
   }
 }
